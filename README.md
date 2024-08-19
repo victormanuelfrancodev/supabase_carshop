@@ -1,16 +1,27 @@
-# supabasemeetup
+# Supabase Stored Procedures Example :zap:
 
-SupaBase Meetup
+This project demonstrates the use of **stored procedures** in Supabase to enhance the efficiency of applications. It's designed using a clean architecture approach, leveraging Flutter for frontend and Supabase as backend service.
 
-## Getting Started
+## Features :star:
 
-This project is a starting point for a Flutter application.
+- **Clean Architecture**: Ensures scalability and maintainability.
+- **State Management**: Uses `InheritedWidget` for efficient state management across the app.
+- **Supabase Integration**: Utilizes Supabase for backend operations including authentication and real-time database interactions.
+- **Environment Configuration**: Manages configuration through the `env` package for safe, scalable app settings.
 
-A few resources to get you started if this is your first Flutter project:
+## How It Works :gear:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The app simulates a car shop where users can view products, add them to their cart, and make purchases. The purchase logic is handled through a stored procedure in Supabase, which ensures all transactions are processed efficiently and securely.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### BuyState Management
+
+```dart
+sealed class BuyState {}
+class InitialState extends BuyState {}
+class LoadingState extends BuyState {}
+class LoadedState extends BuyState {
+  LoadedState({required this.result});
+  final String result;
+}
+class FailureState extends BuyState {}
+```
