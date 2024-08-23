@@ -25,3 +25,82 @@ class LoadedState extends BuyState {
 }
 class FailureState extends BuyState {}
 ```
+
+### Functions and tables 
+
+#### Purchase Table
+
+| Column      | Type      |
+|-------------|-----------|
+| id          | int       |
+| user_id     | int       |
+| product_id  | int       |
+| fee         | double    |
+| create_at   | timestamp |
+
+#### Products Table
+
+| Column      | Type      |
+|-------------|-----------|
+| id          | int       |
+| name        | varchar   |
+| price       | double    |
+| quantity    | int       |
+
+#### Users Table
+
+| Column      | Type      |
+|-------------|-----------|
+| id          | integer   |
+| name        | text      |
+| points      | integer   |
+| create_at   | timestamp |
+
+
+### Supabase SQL Functions 
+
+```
+DECLARE
+    available_stock INT;
+    product_id INT;
+    total_price NUMERIC;
+    failed_products TEXT := ''; 
+BEGIN
+    FOREACH product_id IN ARRAY product_ids LOOP  
+        SELECT quantity INTO available_stock 
+        FROM products 
+        WHERE id = product_id;
+        
+        IF available_stock < 1 THEN
+            failed_products := failed_products || 'Product ID: ' || product_id || ', ';
+            CONTINUE; 
+        END IF;
+        
+        SELECT price INTO total_price 
+        FROM products 
+        WHERE id = product_id;
+        
+        UPDATE products 
+        SET quantity = quantity - 1
+        WHERE id = product_id;
+        
+      
+        INSERT INTO purchase(user_id, product_id, fee) 
+        VALUES (user_id, product_id, total_price);
+    END LOOP;
+
+    UPDATE users 
+    SET points = points + (
+        SELECT SUM(price) / 10
+        FROM products
+        WHERE id = ANY(product_ids)  
+    ) 
+    WHERE id = user_id;
+
+    IF failed_products = '' THEN
+        RETURN 'Purchase successful for all products.';
+    ELSE
+        RETURN 'Purchase successful with exceptions. Failed to purchase: ' || rtrim(failed_products, ', ') || '.';
+    END IF;
+END;
+```
