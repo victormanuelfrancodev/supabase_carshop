@@ -9,7 +9,6 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
-  
   Stopwatch stopwatch = Stopwatch();
 
   Future<void> insert100UsersFunctionSQL() async {
@@ -30,7 +29,7 @@ class _StartPageState extends State<StartPage> {
       }).catchError((error) {
         print(error);
       });
-    }     
+    }
   }
 
   @override
@@ -40,26 +39,37 @@ class _StartPageState extends State<StartPage> {
         title: const Text('Start Page'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: () async {
-              stopwatch.reset();
-              stopwatch.start();
-              await insert100Users();
-              stopwatch.stop();
-              print('Normal mode: ${stopwatch.elapsed}');
-            },
-            child: const Text('Insert 100 users  normal mode'),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () async {
+                  stopwatch.reset();
+                  stopwatch.start();
+                  await insert100Users();
+                  stopwatch.stop();
+                  print('Client side: ${stopwatch.elapsed}');
+                },
+                child: const Text('Insert 100 users - client side'),
+              ),
+            ),
           ),
-          ElevatedButton(
-            onPressed: () async {
-              stopwatch.reset();
-              stopwatch.start();
-              await insert100UsersFunctionSQL();
-              stopwatch.stop();
-              print('Function sql mode: ${stopwatch.elapsed}');
-            },
-            child: const Text('Insert 100 users  Fuction sql'),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () async {
+                  stopwatch.reset();
+                  stopwatch.start();
+                  await insert100UsersFunctionSQL();
+                  stopwatch.stop();
+                  print('Function sql: ${stopwatch.elapsed}');
+                },
+                child: const Text('Insert 100 users Fuction sql'),
+              ),
+            ),
           ),
         ],
       ),
