@@ -13,6 +13,15 @@ This project demonstrates the use of **functions** in Supabase to enhance the ef
 
 The app simulates a car shop where users can view products, add them to their cart, and make purchases. The purchase logic is handled through a function in Supabase, which ensures all transactions are processed efficiently and securely.
 
+### Create your .env file
+
+Example 
+
+```
+SUPABASE_URL = 'supabase_url'
+SUPABASE_KEY = 'supabase_key'
+```
+
 ### BuyState Management
 
 ```dart
