@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabasemeetup/home/menu.dart';
 import 'package:supabasemeetup/presentation/inherited/user_car_product_provider.dart';
 import 'package:supabasemeetup/presentation/notifiers/user_car_products_notifier.dart';
-import 'package:supabasemeetup/presentation/pages/car_shop_page.dart';
 
 
 void main() async {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const CarShopPage(),
+        home: const Menu(),
       ),
     );
   }
