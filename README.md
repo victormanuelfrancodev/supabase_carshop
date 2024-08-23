@@ -1,4 +1,4 @@
-# Supabase Stored Procedures Example :zap:
+# Supabase SQL FUNCTIONS Example :zap:
 
 This project demonstrates the use of **functions** in Supabase to enhance the efficiency of applications. It's designed using a clean architecture approach, leveraging Flutter for frontend and Supabase as backend service.
 
