@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supabasemeetup/home/start_page.dart';
+import 'package:supabasemeetup/presentation/pages/home/start_page.dart';
 import 'package:supabasemeetup/presentation/pages/car_shop_page.dart';
 
 class Menu extends StatelessWidget {
