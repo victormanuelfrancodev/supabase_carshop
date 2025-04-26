@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:supabasemeetup/home/menu.dart';
+import 'package:supabasemeetup/presentation/pages/home/menu.dart';
 import 'package:supabasemeetup/presentation/inherited/user_car_product_provider.dart';
 import 'package:supabasemeetup/presentation/notifiers/user_car_products_notifier.dart';
 

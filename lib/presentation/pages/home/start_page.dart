@@ -13,7 +13,7 @@ class _StartPageState extends State<StartPage> {
 
   Future<void> insert100UsersFunctionSQL() async {
     await Supabase.instance.client
-        .rpc('insertusers', params: {'count': 100}).then((value) {
+        .rpc('insert_users', params: {'count': 100}).then((value) {
       print("---> $value");
     }).catchError((error) {
       print(error);
