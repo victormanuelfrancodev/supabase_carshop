@@ -1,3 +1,4 @@
+import 'package:supabasemeetup/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -36,7 +37,7 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Start Page'),
+        title: Text(S.of(context).startPage),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +68,7 @@ class _StartPageState extends State<StartPage> {
                   stopwatch.stop();
                   print('Function sql: ${stopwatch.elapsed}');
                 },
-                child: const Text('Insert 100 users Fuction sql'),
+                child: Text(S.of(context).insert100UsersFuctionSql),
               ),
             ),
           ),
