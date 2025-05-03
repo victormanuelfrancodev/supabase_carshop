@@ -1,3 +1,4 @@
+import 'package:supabasemeetup/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabasemeetup/presentation/inherited/user_car_product_provider.dart';
@@ -31,7 +32,7 @@ class _CarShopPageState extends State<CarShopPage> {
     final userCarProducts = UserCarProductProvider.of(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Car Shop'),
+          title: Text(S.of(context).carShop),
           actions: [
             AnimatedBuilder(
                 animation: userCarProducts!.userCarProductsNotifier,
@@ -66,7 +67,7 @@ class _CarShopPageState extends State<CarShopPage> {
                 return switch (_carShopStateNotifier.productState) {
                   InitialState() => const SizedBox(),
                   LoadingState() => const CircularProgressIndicator(),
-                  FailureState() => const Text('Failed'),
+                  FailureState() => Text(S.of(context).failed),
                   LoadedState(products: final products) => ListView.builder(
                       itemCount: products.length,
                       itemBuilder: (context, index) {
