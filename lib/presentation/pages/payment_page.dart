@@ -1,3 +1,4 @@
+import 'package:supabasemeetup/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabasemeetup/presentation/inherited/user_car_product_provider.dart';
@@ -24,7 +25,7 @@ class _PaymentPageState extends State<PaymentPage> {
     final userCarProducts = UserCarProductProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Payment Page'),
+        title: Text(S.of(context).paymentPage),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -48,7 +49,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               height: 40,
                               child: Column(
                                 children: [
-                                  Text('My Products'),
+                                  Text(S.of(context).myProducts),
                                 ],
                               ),
                             ),
@@ -96,7 +97,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           child: CircularProgressIndicator(),
                         ),
                       buy.FailureState() => const Center(
-                          child: Text('Failed'),
+                          child: Text(S.of(context).failed),
                         ),
                     };
                   });
