@@ -1,3 +1,4 @@
+import 'package:supabasemeetup/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:supabasemeetup/presentation/pages/home/start_page.dart';
 import 'package:supabasemeetup/presentation/pages/car_shop_page.dart';
@@ -9,7 +10,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Menu'),
+        title: Text(S.of(context).menu),
       ),
       body: Center(
         child: Column(
@@ -22,7 +23,7 @@ class Menu extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const StartPage()),
                 );
               },
-              child: const Text('Efficient Example'),
+              child: Text(S.of(context).efficientExample),
             ),
             ElevatedButton(
               onPressed: () {
@@ -32,7 +33,7 @@ class Menu extends StatelessWidget {
                                 builder: (context) => const CarShopPage()),
                           );
               },
-              child: const Text('Car Shop'),
+              child: Text(S.of(context).carShop),
             ),
           ],
         ),
